@@ -11,4 +11,5 @@ pip install mysql-connector-python
 mysql -h localhost -u root -p
 
 
-- Você pode baixar a nossa criação de esquema e tabelas em SQL como também a população dessas tabelas com dados totalmente fictícios, na pasta "Códigos_SQL".
+
+Você pode baixar a nossa criação de esquema e tabelas em SQL como também a população dessas tabelas com dados totalmente fictícios, na pasta "Códigos_SQL".
