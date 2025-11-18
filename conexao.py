@@ -7,16 +7,16 @@ def conectar():
         conexao = mysql.connector.connect(
             host="localhost",
             user="root",
-            password="Pr0gr4m4ç40+BD", 
+            password="digite_a_sua_password", 
             database="pizzaria_pedidos"
         )
         if conexao.is_connected():
-            print("Conexão ao Banco de Dados realizada com sucesso!")
+            # print para testes
+            print("\nConexão ao Banco de Dados realizada com sucesso!\n")
             return conexao
     except Error as erro:
         print("Erro ao conectar ao Banco de Dados:", erro)
         return None # para não retornar nada se der erro
 
-#NAO MOSTRAR A PASSWORD!!!!!!!!!!!!!!!!
-
-conexao = conectar()
+# Para testar a conexão
+# conexao = conectar()
