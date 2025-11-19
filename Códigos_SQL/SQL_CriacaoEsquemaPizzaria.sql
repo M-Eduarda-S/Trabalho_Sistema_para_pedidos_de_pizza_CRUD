@@ -1,3 +1,7 @@
+-- Disciplina: Banco de Dados I
+-- Professor: Maurício Pasetto de Freitas
+-- Nomes: Maria Eduarda Santos e Yasmin Tarnovski Faccin.
+
 -- CRIAÇÃO DE ESQUEMA E TABELAS
 CREATE SCHEMA pizzaria_pedidos;
 use pizzaria_pedidos;
@@ -170,7 +174,6 @@ CREATE TABLE Pedido (
     valor_pagamento DECIMAL(10,2),
     status ENUM('Aberto', 'Em preparo', 'Saiu para entrega', 'Entregue', 'Cancelado'),
     endereco_entrega VARCHAR(200),
-    quantidade_pizzas INT NOT NULL,
     data_pedido DATE NOT NULL,
     horario_pedido TIME NOT NULL,
     
@@ -182,22 +185,32 @@ CREATE TABLE Pedido (
 -- DROP TABLE Pizza;
 CREATE TABLE Pizza (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    id_pedido INT NOT NULL,
     tamanho ENUM('P', 'M', 'G', 'GG') NOT NULL,
-    valor_pizza DECIMAL(10,2),
+    valor_pizza DECIMAL(10,2)
+);
+
+-- DROP TABLE Pedido_Pizza;
+CREATE TABLE Pedido_Pizza (
+	id INT PRIMARY KEY AUTO_INCREMENT,
+    id_pedido INT NOT NULL,
+    id_pizza INT NOT NULL,
     
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id)
+		ON UPDATE CASCADE
+        ON DELETE CASCADE,
+        
+    FOREIGN KEY (id_pizza) REFERENCES Pizza(id)
 		ON UPDATE CASCADE
         ON DELETE CASCADE
 );
 
 -- DROP TABLE Pizza_Sabor;
 CREATE TABLE Pizza_Sabor (
-    id_pizza INT NOT NULL,
+    id_pedido_pizza INT NOT NULL, -- colocar sabores diferentes em pizzas do mesmo pedido
     id_sabor INT NOT NULL,
     
-    PRIMARY KEY (id_pizza, id_sabor),
-    FOREIGN KEY (id_pizza) REFERENCES Pizza(id)
+    PRIMARY KEY (id_pedido_pizza, id_sabor),
+    FOREIGN KEY (id_pedido_pizza) REFERENCES Pedido_Pizza(id)
 		ON UPDATE CASCADE
         ON DELETE CASCADE,
         
