@@ -1,12 +1,13 @@
 # 🧾 Sistema de Pedidos de Pizza — CRUD em Python
 
 Projeto desenvolvido para a disciplina **Banco de Dados I**, consistindo em um sistema CRUD feito em **Python** que manipula três tabelas principais e relacionadas utilizando um banco de dados **MySQL** para armazenamento e gerenciamento das informações.<br><br>
-___
-***
+
 ---
-**📝Professor que passou o projeto**: Maurício Pasetto de Freitas.<br>
-**💻Desenvolvedoras do projeto**: Maria Eduarda Santos e Yasmin Tarnovski Faccin.<br><br>
-___
+📝**Professor que passou o projeto**: Maurício Pasetto de Freitas.<br>
+💻**Desenvolvedoras do projeto**: Maria Eduarda Santos e Yasmin Tarnovski Faccin.<br>
+
+---
+<br><br>
 ## Como executar o projeto
 ### Instalar dependências
 Se esta for a sua primeira vez executando o projeto, instale o conector Python–MySQL:
