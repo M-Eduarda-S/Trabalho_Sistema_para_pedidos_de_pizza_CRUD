@@ -12,9 +12,7 @@ Projeto desenvolvido para a disciplina **Banco de Dados I**, consistindo em um s
 ## Pré-requisitos:
 - Python instalado
 - MySQL (local) instalado e configurado
-- MySQL Workbench para exercutar os scripts criados e visulaizar o banco de dados.<br>
-
-
+- MySQL Workbench para exercutar os scripts criados e visualizar o banco de dados.<br><br>
 
 ## Como executar o projeto
 ### Instalar dependências
