@@ -7,7 +7,8 @@ Projeto desenvolvido para a disciplina **Banco de Dados I**, consistindo em um s
 💻**Desenvolvedoras do projeto**: Maria Eduarda Santos e Yasmin Tarnovski Faccin.<br>
 
 ---
-<br><br>
+<br>
+
 ## Como executar o projeto
 ### Instalar dependências
 Se esta for a sua primeira vez executando o projeto, instale o conector Python–MySQL:
