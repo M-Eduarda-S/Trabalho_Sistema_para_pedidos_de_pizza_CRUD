@@ -4,7 +4,7 @@ Projeto desenvolvido para a disciplina **Banco de Dados I**, consistindo em um s
 
 ---
 
-**Professor que passou o projeto**: Maurício Pasetto de Freitas
+**Professor que passou o projeto**: Maurício Pasetto de Freitas<br>
 **Desenvolvedoras do projeto**: Maria Eduarda Santos e Yasmin Tarnovski Faccin.
 
 ---
@@ -17,43 +17,40 @@ Se esta for a sua primeira vez executando o projeto, instale o conector Python�
 ```bash
 pip install mysql-connector-python
 ```
-
+<br>
 Se estiver utilizando um ambiente virtual (opcional), ative-o:
 ```
 .venv\Scripts\activate
 ```
-
+<br>
 ***Executar o sistema***
 Para rodar o projeto, digite no terminal:
 ```
 python main.py
 ```
-
+<br>
 ***Acessar o MySQL local***
 Para acessar o banco de dados MySQL via ***terminal***:
 ```
 mysql -h localhost -u root -p
 ```
+<br>
 Se estiver usando um console que aceita comandos SQL diretos:
 ```
 \sql
 \connect root@localhost
 ```
 Você também pode acessar o banco normalmente pelo MySQL Workbench.
-
+<br>
 ***Banco de Dados***
 📂 Na pasta Códigos_SQL, você encontrará:
   → create_tables.sql – criação do esquema e das tabelas
   → insert_data.sql – população com dados fictícios para testes
 Execute esses scripts no MySQL antes de iniciar o programa.
-
+<br>
 ***Observações***
 - Caso precise alterar as credenciais do banco, edite o arquivo conexao.py.
 - Todos os dados utilizados são fictícios e servem apenas para fins de teste.
 - O projeto implementa operações de CRUD completo para gerenciamento das tabelas relacionadas ao sistema de pedidos de pizza.
-
+<br>
 ❕ Projeto acadêmico desenvolvido exclusivamente para fins educacionais.
-
-
-
-Você pode baixar a nossa criação de esquema e tabelas em SQL como também a população dessas tabelas com dados totalmente fictícios, na pasta "Códigos_SQL".
