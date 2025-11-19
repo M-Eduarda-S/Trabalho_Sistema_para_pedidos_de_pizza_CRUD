@@ -1,14 +1,58 @@
-# Trabalho_Sistema_para_pedidos_de_pizza_CRUD
-Trabalho da disciplina Banco de Dados I, no qual foi desenvolvido um sistema de CRUD em Python para manipulação de três tabelas principais e relacionadas, utilizando um banco de dados MySQL para armazenamento e gerenciamento das informações.
+# 🧾 Sistema de Pedidos de Pizza — CRUD em Python
 
-# Para exercutar o projeto primeiro digite no terminal:
-python main.py
+Projeto desenvolvido para a disciplina **Banco de Dados I**, consistindo em um sistema CRUD feito em **Python** que manipula três tabelas principais e relacionadas utilizando um banco de dados **MySQL** para armazenamento e gerenciamento das informações.
 
-# Se for a primeira vez rodando o projeto é necessário instalar a biblioteca para conectar o Python com o MySQL:
+---
+
+**Professor que passou o projeto**: Maurício Pasetto de Freitas
+**Desenvolvedoras do projeto**: Maria Eduarda Santos e Yasmin Tarnovski Faccin.
+
+---
+
+## Como executar o projeto
+
+### Instalar dependências
+Se esta for a sua primeira vez executando o projeto, instale o conector Python–MySQL:
+
+```bash
 pip install mysql-connector-python
+```
 
-# E para acessar o banco de dados local que é o MySQL:
+Se estiver utilizando um ambiente virtual (opcional), ative-o:
+```
+.venv\Scripts\activate
+```
+
+***Executar o sistema***
+Para rodar o projeto, digite no terminal:
+```
+python main.py
+```
+
+***Acessar o MySQL local***
+Para acessar o banco de dados MySQL via ***terminal***:
+```
 mysql -h localhost -u root -p
+```
+Se estiver usando um console que aceita comandos SQL diretos:
+```
+\sql
+\connect root@localhost
+```
+Você também pode acessar o banco normalmente pelo MySQL Workbench.
+
+***Banco de Dados***
+📂 Na pasta Códigos_SQL, você encontrará:
+  → create_tables.sql – criação do esquema e das tabelas
+  → insert_data.sql – população com dados fictícios para testes
+Execute esses scripts no MySQL antes de iniciar o programa.
+
+***Observações***
+- Caso precise alterar as credenciais do banco, edite o arquivo conexao.py.
+- Todos os dados utilizados são fictícios e servem apenas para fins de teste.
+- O projeto implementa operações de CRUD completo para gerenciamento das tabelas relacionadas ao sistema de pedidos de pizza.
+
+❕ Projeto acadêmico desenvolvido exclusivamente para fins educacionais.
 
 
 
