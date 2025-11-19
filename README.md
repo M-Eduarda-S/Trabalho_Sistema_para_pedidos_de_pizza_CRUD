@@ -2,6 +2,8 @@
 
 Projeto desenvolvido para a disciplina **Banco de Dados I**, consistindo em um sistema CRUD feito em **Python** que manipula três tabelas principais e relacionadas utilizando um banco de dados **MySQL** para armazenamento e gerenciamento das informações.<br><br>
 ___
+***
+---
 **📝Professor que passou o projeto**: Maurício Pasetto de Freitas.<br>
 **💻Desenvolvedoras do projeto**: Maria Eduarda Santos e Yasmin Tarnovski Faccin.<br><br>
 ___
