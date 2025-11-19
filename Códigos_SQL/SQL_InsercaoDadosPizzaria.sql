@@ -1,17 +1,27 @@
+-- Disciplina: Banco de Dados I
+-- Professor: Maurício Pasetto de Freitas
+-- Nomes: Maria Eduarda Santos e Yasmin Tarnovski Faccin.
+
 -- POPULANDO TABELAS com dados totalmente fictícios
 use pizzaria_pedidos;
 
 DESCRIBE Estado;
 DESCRIBE Cidade;
 DESCRIBE Pessoa;
+DESCRIBE Telefone_pessoa;
+DESCRIBE Endereco_pessoa;
 DESCRIBE Cliente;
 DESCRIBE Funcionario;
 DESCRIBE Cozinheiro;
 DESCRIBE Entregador;
 DESCRIBE Ingrediente;
+DESCRIBE Fornecedor_Ingrediente;
 DESCRIBE Sabor;
+DESCRIBE Ingrediente_Sabor;
 DESCRIBE Pedido;
 DESCRIBE Pizza;
+DESCRIBE Pedido_Pizza;
+DESCRIBE Pizza_Sabor;
 DESCRIBE Entrega;
 
 SELECT * FROM Estado;
@@ -24,9 +34,13 @@ SELECT * FROM Funcionario;
 SELECT * FROM Cozinheiro;
 SELECT * FROM Entregador;
 SELECT * FROM Ingrediente;
+SELECT * FROM Fornecedor_Ingrediente;
 SELECT * FROM Sabor;
+SELECT * FROM Ingrediente_Sabor;
 SELECT * FROM Pedido;
-SELECT * FROM Pizza;
+SELECT * FROM Pizza; 
+SELECT * FROM Pedido_Pizza;
+SELECT * FROM Pizza_Sabor;
 SELECT * FROM Entrega;
 
 INSERT INTO Estado (sigla, nome) VALUES
@@ -117,7 +131,7 @@ INSERT INTO Ingrediente (nome, quantidade, disponibilidade, valor_unitario) VALU
 	('Cebola', 25, 'Sim', 3.50),   
 	('Brócolis', 20, 'Sim', 5.00);   
     
-INSERT INTO Fornecedor_Ingrediente VALUES
+INSERT INTO Fornecedor_Ingrediente (id_fornecedor, id_ingrediente) VALUES
 	(1,1),
 	(2,2),
 	(3,3),
@@ -131,7 +145,7 @@ INSERT INTO Sabor (nome) VALUES
 	('4 Queijos'),
 	('Napolitana');
 
-INSERT INTO Ingrediente_Sabor VALUES
+INSERT INTO Ingrediente_Sabor (id_ingrediente, id_sabor) VALUES
 	(1,1),
 	(1,2),
 	(2,2),
@@ -143,26 +157,34 @@ INSERT INTO Ingrediente_Sabor VALUES
 	(2,5),
 	(4,5);
     
-INSERT INTO Pedido (id_cliente, valor_pagamento, status, endereco_entrega, quantidade_pizzas, data_pedido, horario_pedido) VALUES
-	(1, 45.00, 'Aberto', 'Rua 7 de Setembro, 120 - Blumenau', 1, CURRENT_DATE, '19:10:00'),
-	(2, 60.00, 'Em preparo', 'Av. das Comunidades, 441 - Gaspar', 2, CURRENT_DATE, '19:20:00'),
-	(3, 32.00, 'Saiu para entrega', 'Rua das Palmeiras, 999 - Indaial', 1, CURRENT_DATE, '19:30:00'),
-	(4, 85.00, 'Entregue', 'Rua Barão do Rio Branco, 55 - Brusque', 2, CURRENT_DATE, '19:00:00'),
-	(5, 50.00, 'Aberto', 'Rua Blumenau, 222 - Timbó', 1, CURRENT_DATE, '19:40:00');
+INSERT INTO Pedido (id_cliente, valor_pagamento, status, endereco_entrega, data_pedido, horario_pedido) VALUES
+	(1, 45.00, 'Aberto', 'Rua 7 de Setembro, 120 - Blumenau', CURRENT_DATE, '19:10:00'),
+	(2, 60.00, 'Em preparo', 'Av. das Comunidades, 441 - Gaspar', CURRENT_DATE, '19:20:00'),
+	(3, 30.00, 'Saiu para entrega', 'Rua das Palmeiras, 999 - Indaial', CURRENT_DATE, '19:30:00'),
+	(4, 85.00, 'Entregue', 'Rua Barão do Rio Branco, 55 - Brusque', CURRENT_DATE, '19:00:00'),
+	(5, 120.00, 'Aberto', 'Rua Blumenau, 222 - Timbó', CURRENT_DATE, '19:40:00');
     
-INSERT INTO Pizza (id_pedido, tamanho, valor_pizza) VALUES
-	(1, 'M', 45.00),
-	(2, 'G', 60.00),
-	(2, 'P', 30.00),
-	(3, 'M', 32.00),
-	(4, 'G', 85.00);
+INSERT INTO Pizza (tamanho, valor_pizza) VALUES
+	('P', 30.00),
+	('M', 45.00),
+	('G', 85.00),
+    ('GG', 120.00);
     
-INSERT INTO Pizza_Sabor VALUES
-	(1,1),
-	(2,2),
-	(2,4),
-	(3,3),
-	(4,5);
+INSERT INTO Pedido_Pizza (id_pedido, id_pizza) VALUES
+	(1, 2),
+    (2, 1),
+    (2, 1), -- o mesmo pedido pegou 2 pizzas P
+    (3, 1),
+    (4, 3),
+    (5, 4);
+    
+INSERT INTO Pizza_Sabor (id_pedido_pizza, id_sabor) VALUES
+	(1, 1),
+	(2, 2),
+	(3, 4), -- pizza do mesmo pedido que a de cima, mas com sabores diferentes
+	(4, 3),
+	(5, 5),
+    (6, 5);
     
 INSERT INTO Entrega (id_pedido, id_entregador, data_entrega, horario, status) VALUES
 	(1, 1, CURRENT_DATE, '19:40:00', 'Em rota'),
