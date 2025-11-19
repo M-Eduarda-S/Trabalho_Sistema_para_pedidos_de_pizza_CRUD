@@ -9,6 +9,13 @@ Projeto desenvolvido para a disciplina **Banco de Dados I**, consistindo em um s
 ---
 <br>
 
+## Pré-requisitos:
+- Python instalado
+- MySQL (local) instalado e configurado
+- MySQL Workbench para exercutar os scripts criados e visulaizar o banco de dados.<br>
+
+
+
 ## Como executar o projeto
 ### Instalar dependências
 Se esta for a sua primeira vez executando o projeto, instale o conector Python–MySQL:
@@ -42,8 +49,8 @@ Você também pode acessar o banco normalmente pelo MySQL Workbench.<br><br>
 
 ### Banco de Dados
 📂 Na pasta Códigos_SQL, você encontrará:<br>
-  → create_tables.sql – criação do esquema e das tabelas<br>
-  → insert_data.sql – população com dados fictícios para testes<br>
+  → SQL_CriacaoEsquemaPizzaria.sql – criação do esquema e das tabelas<br>
+  → SQL_InsercaoDadosPizzaria.sql – população com dados fictícios para testes<br>
 Execute esses scripts no MySQL antes de iniciar o programa.<br><br>
 
 #### Observações:
