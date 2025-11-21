@@ -79,17 +79,17 @@ def criarCliente(nome, email, cpf):
     cursor = None
 
     try:
-        conexao = conectar()
+        conexao = conectar() # abre conexão com o banco
         if conexao is None:
             print("Erro ao conectar ao banco")
             return
         
-        cursor = conexao.cursor()
+        cursor = conexao.cursor() # cria um cursor para executar comandos SQL
 
         # Inserir Pessoa
         sql_pessoa = "INSERT INTO Pessoa (nome, email) VALUES (%s, %s)"
         cursor.execute(sql_pessoa, (nome, email))
-        id_pessoa = cursor.lastrowid
+        id_pessoa = cursor.lastrowid  # consegue o ultimo ID inserido
 
         # Inserir Cliente
         sql_cliente = "INSERT INTO Cliente (id_pessoa, cpf) VALUES (%s, %s)"
@@ -106,15 +106,15 @@ def criarCliente(nome, email, cpf):
             while input("\nAdicionar outro endereço? (s/n): ").lower() == "s":
                 adicionarEndereco(cursor, id_pessoa)
 
-        conexao.commit()
+        conexao.commit() # salva no banco
         print("\nCliente criado com sucesso! ID:", id_cliente)
         return id_pessoa  # ID para cadastrar telefone e endereço
 
-    except Error as e:
+    except Error as e: # captura qualquer erro da biblioteca mysql.connector
         print("Erro ao cadastrar cliente:", e)
 
     finally:
-        if cursor: # para evitar erro se não existir
+        if cursor: # se o cursor foi criado, ele é fechado
             cursor.close()
         if conexao:
             conexao.close()
@@ -138,8 +138,8 @@ def listarClientes():
             INNER JOIN Pessoa ON Pessoa.id = Cliente.id_pessoa
         """
         cursor.execute(sql)
-        for row in cursor.fetchall(): # pega todos os resultados da última consulta SELECT
-            print(row)
+        for linha in cursor.fetchall(): # pega todos os resultados da última consulta SELECT
+            print(linha)
 
     except Exception as e:
         print("Erro ao listar clientes:", e)
@@ -164,7 +164,7 @@ def atualizarCliente(id_cliente):
         
         cursor = conexao.cursor()
 
-        # Buscar o ID da pessoa
+        # busca na tabela Cliente a coluna id_pessoa correspondente ao cliente com aquele id
         cursor.execute("SELECT id_pessoa FROM Cliente WHERE id = %s", (id_cliente,))
         dados = cursor.fetchone() # pega um resultado da última consulta SELECT
 
@@ -172,7 +172,7 @@ def atualizarCliente(id_cliente):
             print("Cliente não encontrado!")
             return
 
-        id_pessoa = dados[0]
+        id_pessoa = dados[0] # dados[0] é o valor da coluna id_pessoa
 
         nome = input("Novo nome (enter para manter o dado anterior): ")
         if nome:
@@ -230,7 +230,7 @@ def atualizarCliente(id_cliente):
                 elif escolha_tipo == "3":
                     novo_tipo = "Comercial"
                 elif escolha_tipo == "":
-                    novo_tipo = None  # Mantém o tipo anterior
+                    novo_tipo = None  # mantém o tipo anterior
                 else:
                     print("Opção inválida. Vai ser mantido o tipo anterior.")
 
@@ -320,15 +320,15 @@ def deletarCliente(id_cliente):
         
         cursor = conexao.cursor()
 
-        # acha id_pessoa
+        # acha id_pessoa para excluir tudo relacionado a ela
         cursor.execute("SELECT id_pessoa FROM Cliente WHERE id=%s", (id_cliente,))
-        result = cursor.fetchone()
+        resultado = cursor.fetchone()
 
-        if not result:
+        if not resultado:
             print("Cliente não encontrado.")
             return
 
-        id_pessoa = result[0]
+        id_pessoa = resultado[0]
 
         # deletar a pessoa (e tudo dela)
         cursor.execute("DELETE FROM Pessoa WHERE id=%s", (id_pessoa,))
