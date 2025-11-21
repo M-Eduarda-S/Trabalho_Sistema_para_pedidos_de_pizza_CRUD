@@ -53,7 +53,7 @@ Você também pode acessar o banco normalmente pelo MySQL Workbench.<br><br>
 Execute esses scripts no MySQL antes de iniciar o programa.<br><br>
 
 ### Diagramas
-📂 Na pasta "Diagramas" contém os diagramas produzidos para este projeto:<br>
+📂 Na pasta "Diagramas" estão todos os diagramas produzidos para este projeto:<br>
   ▸ Diagrama Conceitual: `DiagramaConceitual_SistemaParaPedidosDePizza.brM3`<br>
   ▸ Diagrama Lógico Textual Normalizado: `ProjetoLógicoTextualNormalizado_SistemaParaPedidosDePizza.pdf`<br>
   ▸ Diagrama Lógico Relacional: `DR_SistemaParaPedidosDePizza.mwb`
