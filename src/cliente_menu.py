@@ -1,4 +1,4 @@
-from cliente_CRUD import criarCliente, adicionarTelefone, adicionarEndereco, listarClientes, atualizarCliente, deletarCliente
+from cliente_CRUD import criarCliente, listarClientes, atualizarCliente, deletarCliente
 
 def menuCliente():
     while True:
