@@ -29,7 +29,7 @@ pip install mysql-connector-python
 ### Rodar o projeto
 Para rodar o projeto, digite no terminal:
 ```
-python main.py
+python src/main.py
 ```
 <br><br>
 ### Acessar o MySQL local
