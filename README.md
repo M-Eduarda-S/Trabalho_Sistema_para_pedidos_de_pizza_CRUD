@@ -15,7 +15,7 @@ Projeto desenvolvido para a disciplina **Banco de Dados I**, consistindo em um s
 - MySQL Workbench para exercutar os scripts criados e visualizar o banco de dados.<br><br>
 
 ## Como executar o projeto
-
+<br><br>
 ### Instalar dependências
 Se esta for a sua primeira vez executando o projeto, instale o conector Python–MySQL:
 
