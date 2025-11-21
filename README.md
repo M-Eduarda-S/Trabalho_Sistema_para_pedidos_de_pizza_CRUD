@@ -47,10 +47,18 @@ Você também pode acessar o banco normalmente pelo MySQL Workbench.<br><br>
 
 
 ### Banco de Dados
-📂 Na pasta Códigos_SQL, você encontrará:<br>
+📂 Na pasta "Códigos_SQL", você encontrará:<br>
   → SQL_CriacaoEsquemaPizzaria.sql – criação do esquema e das tabelas<br>
   → SQL_InsercaoDadosPizzaria.sql – população com dados fictícios para testes<br>
 Execute esses scripts no MySQL antes de iniciar o programa.<br><br>
+
+### Diagramas
+Na pasta "Diagramas" que contém os diagramas produzidos para este projeto:
+  ▸ Diagrama Conceitual: `DiagramaConceitual_SistemaParaPedidosDePizza.brM3`
+  ▸ Diagrama Lógico Textual Normalizado: `ProjetoLógicoTextualNormalizado_SistemaParaPedidosDePizza.pdf`
+  ▸ Diagrama Lógico Relacional: `DR_SistemaParaPedidosDePizza.mwb`
+
+<br><br>
 
 #### Observações:
 - Caso precise alterar as credenciais do banco, edite o arquivo conexao.py.
