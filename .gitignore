@@ -9,4 +9,4 @@ __pycache__/
 venv/
 
 # Arquivo de variáveis de ambiente
-.envs
+.env
