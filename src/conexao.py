@@ -1,14 +1,19 @@
 import mysql.connector
 from mysql.connector import Error
+from dotenv import carrega_dotenv
+import os
+
+# Carrega variáveis do arquivo .env
+carrega_dotenv()
 
 # Estabelece conexão com o Banco de Dados
 def conectar():
     try:
         conexao = mysql.connector.connect(
-            host="localhost",
-            user="root",
-            password="digite_a_sua_password", 
-            database="pizzaria_pedidos"
+            host=os.getenv("BD_HOST"), # pega o valor de cada variável
+            user=os.getenv("BD_USER"),
+            password=os.getenv("BD_SENHA"), 
+            database=os.getenv("BD_NOME")
         )
         if conexao.is_connected():
             # print para testes

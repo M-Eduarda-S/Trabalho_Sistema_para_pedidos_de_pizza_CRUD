@@ -2,7 +2,7 @@
 # Professor: Maurício Pasetto de Freitas
 # Nomes: Maria Eduarda Santos e Yasmin Tarnovski Faccin.
 
-from cliente_menu import menuCliente
+from menu.cliente_menu import menuCliente
 
 def menuPrincipal():
     while True:
