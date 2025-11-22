@@ -43,6 +43,7 @@ BD_SENHA=sua_senha_aqui
 BD_NOME=pizzaria_pedidos
 ```
 <br>
+
 - O arquivo `conexao.py` já está configurado para ler esses valores usando `python-dotenv`.
 
 <br><br>
