@@ -27,9 +27,7 @@ pip install mysql-connector-python
 ```
 <br>
 
-## Usar arquivo .env
-
-Para não deixar a senha do MySQL escrita diretamente no código, você tem que usar um arquivo .env.
+Para não deixar a senha do MySQL escrita diretamente no código, você pode usar um arquivo `.env`.
 
 **1ª Instale a biblioteca:**
 ```
@@ -37,7 +35,7 @@ pip install python-dotenv
 ```
 <br>
 
-**2ª Crie um arquivo chamado .env na raiz do projeto contendo:**
+**2ª Crie um arquivo chamado `.env` na raiz do projeto contendo:**
 ```
 BD_HOST=localhost
 BD_USER=root
@@ -45,7 +43,7 @@ BD_SENHA=sua_senha_aqui
 BD_NOME=pizzaria_pedidos
 ```
 <br>
-- O arquivo conexao.py já está configurado para ler esses valores usando python-dotenv.
+- O arquivo `conexao.py` já está configurado para ler esses valores usando `python-dotenv`.
 
 <br><br>
 ### Rodar o projeto
