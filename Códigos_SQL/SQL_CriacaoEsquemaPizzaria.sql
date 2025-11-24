@@ -171,9 +171,9 @@ CREATE TABLE Ingrediente_Sabor (
 CREATE TABLE Pedido (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_cliente INT NOT NULL,
-    valor_pagamento DECIMAL(10,2),
-    status ENUM('Aberto', 'Em preparo', 'Saiu para entrega', 'Entregue', 'Cancelado'),
-    endereco_entrega VARCHAR(200),
+    valor_pagamento DECIMAL(10,2) NOT NULL,
+    status ENUM('Aberto', 'Em preparo', 'Saiu para entrega', 'Entregue', 'Cancelado') NOT NULL,
+    endereco_entrega VARCHAR(200) NOT NULL,
     data_pedido DATE NOT NULL,
     horario_pedido TIME NOT NULL,
     
