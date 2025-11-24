@@ -29,7 +29,7 @@ CREATE TABLE Cidade (
 CREATE TABLE Pessoa (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
-    email VARCHAR(200) NOT NULL
+    email VARCHAR(200) NOT NULL UNIQUE
 );
 
 -- DROP TABLE Telefone_pessoa;
