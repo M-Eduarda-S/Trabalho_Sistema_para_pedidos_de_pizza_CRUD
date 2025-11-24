@@ -1,36 +1,17 @@
 from conexao import conectar
 from mysql.connector import Error
-from CRUD.cliente_CRUD import listarClientes
+
 from datetime import datetime
 
 
 # Criar um novo pedido
-def criarPedido():
+def criarPedido( id_cliente, endereco_entrega, valor_pagamento):
     conexao = conectar()
     if conexao is None:
         return
     
     try:
         cursor = conexao.cursor()
-
-        print("\n--- CRIANDO PEDIDO ---")
-
-        # Escolher cliente
-        print("\n--- SELECIONE O CLIENTE ---")
-        listarClientes()
-
-    
-        
-        id_cliente = input("\nID do cliente que está fazendo o pedido: ")
-
-        # Endereço 
-        endereco_entrega = input("Endereço de entrega: ")
-
-        # Valor  
-        valor_pagamento = float(input("Valor do pagamento (digite 0 se não tiver ainda): "))
-        
-
-        # Status inicial
         status = "Aberto"
 
         # Data e horário atuais
@@ -88,7 +69,7 @@ def listarPedidos():
         conexao.close()
 
 
-def atualizarPedido():
+def atualizarPedido(novo_status, id_pedido):
     conexao = conectar()
     if conexao is None:
         return
@@ -103,26 +84,6 @@ def atualizarPedido():
             print("Pedido não encontrado!")
             return
 
-        print("\n--- ATUALIZAR PEDIDO ---")
-        print("Status disponíveis:")
-        print("1 - Aberto")
-        print("2 - Em preparo")
-        print("3 - Saiu para entrega")
-        print("4 - Entregue")
-        print("5 - Cancelado")
-
-        opc = input("\nEscolha novo status: ")
-
-        match opc:
-            case "1": novo_status = "Aberto"
-            case "2": novo_status = "Em preparo"
-            case "3": novo_status = "Saiu para entrega"
-            case "4": novo_status = "Entregue"
-            case "5": novo_status = "Cancelado"
-            case _:
-                print("Opção inválida.")
-                return
-
         cursor.execute("UPDATE Pedido SET status=%s WHERE id=%s", (novo_status, id_pedido))
         conexao.commit()
 
@@ -135,7 +96,7 @@ def atualizarPedido():
         cursor.close()
         conexao.close()
 
-def deletarPedido():
+def deletarPedido(id_pedido):
     conexao = conectar()
     if conexao is None:
         return
@@ -143,7 +104,6 @@ def deletarPedido():
     try:
         cursor = conexao.cursor()
 
-        id_pedido = input("\nID do pedido para deletar: ")
 
         cursor.execute("SELECT id FROM Pedido WHERE id=%s", (id_pedido,))
         if cursor.fetchone() is None:
