@@ -186,7 +186,7 @@ CREATE TABLE Pedido (
 CREATE TABLE Pizza (
     id INT PRIMARY KEY AUTO_INCREMENT,
     tamanho ENUM('P', 'M', 'G', 'GG') NOT NULL,
-    valor_pizza DECIMAL(10,2)
+    valor_pizza DECIMAL(10,2) NOT NULL
 );
 
 -- DROP TABLE Pedido_Pizza;
@@ -223,8 +223,8 @@ CREATE TABLE Pizza_Sabor (
 CREATE TABLE Entrega (
     id_pedido INT PRIMARY KEY NOT NULL,
     id_entregador INT NULL, -- o entegador ainda não foi atribuito
-    data_entrega DATE,
-    horario TIME,
+    data_entrega DATE NOT NULL,
+    horario TIME NOT NULL,
     status ENUM('Pendente','Em rota','Entregue') NOT NULL,
     
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id) -- só pode existir uma entrega se o pedido existir e se o pedido for deletado a entrega deve sumir junto
