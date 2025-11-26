@@ -29,7 +29,7 @@ CREATE TABLE Cidade (
 CREATE TABLE Pessoa (
     id INT PRIMARY KEY AUTO_INCREMENT,
     nome VARCHAR(100) NOT NULL,
-    email VARCHAR(200) NOT NULL
+    email VARCHAR(200) NOT NULL UNIQUE
 );
 
 -- DROP TABLE Telefone_pessoa;
@@ -171,9 +171,9 @@ CREATE TABLE Ingrediente_Sabor (
 CREATE TABLE Pedido (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_cliente INT NOT NULL,
-    valor_pagamento DECIMAL(10,2),
-    status ENUM('Aberto', 'Em preparo', 'Saiu para entrega', 'Entregue', 'Cancelado'),
-    endereco_entrega VARCHAR(200),
+    valor_pagamento DECIMAL(10,2) NOT NULL,
+    status ENUM('Aberto', 'Em preparo', 'Saiu para entrega', 'Entregue', 'Cancelado') NOT NULL,
+    endereco_entrega VARCHAR(200) NOT NULL,
     data_pedido DATE NOT NULL,
     horario_pedido TIME NOT NULL,
     
@@ -186,7 +186,7 @@ CREATE TABLE Pedido (
 CREATE TABLE Pizza (
     id INT PRIMARY KEY AUTO_INCREMENT,
     tamanho ENUM('P', 'M', 'G', 'GG') NOT NULL,
-    valor_pizza DECIMAL(10,2)
+    valor_pizza DECIMAL(10,2) NOT NULL
 );
 
 -- DROP TABLE Pedido_Pizza;
@@ -223,8 +223,8 @@ CREATE TABLE Pizza_Sabor (
 CREATE TABLE Entrega (
     id_pedido INT PRIMARY KEY NOT NULL,
     id_entregador INT NULL, -- o entegador ainda não foi atribuito
-    data_entrega DATE,
-    horario TIME,
+    data_entrega DATE NOT NULL,
+    horario TIME NOT NULL,
     status ENUM('Pendente','Em rota','Entregue') NOT NULL,
     
     FOREIGN KEY (id_pedido) REFERENCES Pedido(id) -- só pode existir uma entrega se o pedido existir e se o pedido for deletado a entrega deve sumir junto
