@@ -3,6 +3,9 @@
 # Nomes: Maria Eduarda Santos e Yasmin Tarnovski Faccin.
 
 from menu.cliente_menu import menuCliente
+from menu.pedido_menu import menuPedido
+from menu.pizza_menu import menuPizza
+
 
 def menuPrincipal():
     while True:
@@ -19,11 +22,11 @@ def menuPrincipal():
             case "1":
                 menuCliente()
 
-            # case "2":
-            #     menuPedido()
+            case "2":
+                menuPedido()
 
-            # case "3":
-            #     menuPizza()
+            case "3":
+                menuPizza()
 
             case "4":
                 print("\n-> Créditos:")

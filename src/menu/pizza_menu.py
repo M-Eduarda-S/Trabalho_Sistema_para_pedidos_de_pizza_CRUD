@@ -1,8 +1,6 @@
 from pizza_CRUD import adicionarPizza, listarPizzas, atualizarPizza, deletarPizza
 
-#FINALIZARRRRRRRRRRRRRR
-
-def pizzaMenu():
+def menuPizza():
     while True:
         print("CRUD PIZZA")
         print("1. Listar Pizzas")
@@ -20,16 +18,17 @@ def pizzaMenu():
                 tamanho = input("Tamanho da pizza (P, M, G): ")
                 sabor = input("Sabor da pizza: ")
                 valor = float(input("Valor da pizza: "))
-                while True:
-                    try:
-                        #ingredientes 
+              
+                adicionarPizza( tamanho, sabor, valor)
 
-                adicionarPizza()
+                
             case "3":
                 listarPizzas()
+                print("-" * 20)
                 atualizarPizza()
             case "4":
                 listarPizzas()
+                print("-" * 20)
                 deletarPizza()
             case "0":
                 print("Saindo do menu de pizzas...")

@@ -25,7 +25,7 @@ def listarPizzas():
         conexao.close()
 
 
-def adicionarPizza():
+def adicionarPizza(tamanho, sabor, valor_pizza):
     conexao = conectar()
     if conexao is None:
         return
@@ -33,12 +33,9 @@ def adicionarPizza():
     try:
         cursor = conexao.cursor()
 
-        nome = input("\nNome da pizza: ")
-        ingredientes = input("Ingredientes (separados por vírgula): ")
-        preco = float(input("Preço da pizza: R$"))
-
-        sql = "INSERT INTO Pizza (nome, ingredientes, preco) VALUES (%s, %s, %s)"
-        valores = (nome, ingredientes, preco)
+       
+        sql = "INSERT INTO Pizza (tamanho, valor_pizza) VALUES (%s, %s)"
+        valores = (tamanho, valor_pizza)
 
         cursor.execute(sql, valores)
         conexao.commit()
