@@ -1,7 +1,7 @@
-from pedido_CRUD import visualizarPedidos, adicionarPedido, deletarPedido, atualizarPedido, listarPedidos
+from CRUD.pedido_CRUD import visualizarPedidos, adicionarPedido, deletarPedido, atualizarPedido, listarPedidos
 from CRUD.cliente_CRUD import listarClientes
 
-def pedidoMenu():
+def menuPedido():
     while True:
         print("CRUD PEDIDO")
         print("1. Ver Pedidos")
@@ -15,6 +15,7 @@ def pedidoMenu():
         match opcao:
             case "1":
                 visualizarPedidos()
+
             case "2":
                 listarClientes()
 
@@ -23,10 +24,12 @@ def pedidoMenu():
                 valor_pagamento = float(input("Valor do pagamento (digite 0 se não tiver ainda): "))
                 
                 adicionarPedido(id_cliente, endereco_entrega, valor_pagamento)
+
             case "3":
                 listarPedidos()
                 id_pedido = input("\nID do pedido para deletar: ")
-                deletarPedido(id)
+                deletarPedido(id_pedido)
+
             case "4":
                 listarPedidos()
                 id_pedido = input("\nID do pedido que deseja atualizar: ")
@@ -41,7 +44,8 @@ def pedidoMenu():
                     case _:
                         print("Opção inválida.")
                         return
-                atualizarPedido(StatusNovo, id_pedido)
+                    
+                atualizarPedido(novo_status, id_pedido)
 
             case "0":
                 print("Saindo do menu de pedidos...")
@@ -49,5 +53,3 @@ def pedidoMenu():
 
             case _:
                 print("\nOpção inválida!")
-
-        

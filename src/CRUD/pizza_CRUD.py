@@ -1,7 +1,6 @@
 from conexao import conectar
 from mysql.connector import Error
 
-
 #testar ainda
 def listarPizzas():
     conexao = conectar()
