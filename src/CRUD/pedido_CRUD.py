@@ -162,7 +162,9 @@ def atualizarPedido(novo_status, id_pedido):
         cursor = conexao.cursor()
 
         #localiza o status antes de realziar a atualização
-        status_antigo = cursor.execute("SELECT status FROM Pedido WHERE id=%s", (id_pedido,)) 
+        cursor.execute("SELECT status FROM Pedido WHERE id=%s", (id_pedido,))
+        resultado = cursor.fetchone()
+        status_antigo = resultado[0]
 
         if status_antigo == novo_status:
             print("O pedido já está com esse status.")
@@ -217,4 +219,3 @@ def deletarPedido(id_pedido):
     finally:
         cursor.close()
         conexao.close()
-

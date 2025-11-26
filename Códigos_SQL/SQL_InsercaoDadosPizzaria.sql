@@ -111,11 +111,11 @@ INSERT INTO Cozinheiro (id_funcionario, funcao) VALUES
 	(5, 'Controle de estoque');
     
 INSERT INTO Entregador (id_funcionario, cnh, placa_veiculo) VALUES
-	(1, 123456, 'QWE1A23'),
-	(2, 654321, 'ASD2B34'),
-	(3, 112233, 'ZXC3C45'),
-	(4, 443322, 'RTY4D56'),
-	(5, 778899, 'FGH5E67');
+	(1, '12345678901', 'QWE1A23'),
+    (2, '65432198701', 'ASD2B34'),
+    (3, '11223344556', 'ZXC3C45'),
+    (4, '44332211098', 'RTY4D56'),
+    (5, '77889966554', 'FGH5E67');
     
 INSERT INTO Fornecedor (id_pessoa, cnpj) VALUES
 	(6, '12.345.678/0001-10'),

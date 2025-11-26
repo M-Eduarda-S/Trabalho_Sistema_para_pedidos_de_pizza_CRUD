@@ -103,7 +103,7 @@ CREATE TABLE Cozinheiro (
 CREATE TABLE Entregador (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_funcionario INT NOT NULL,
-    cnh INT NOT NULL,
+    cnh VARCHAR(11) NOT NULL,
     placa_veiculo VARCHAR(8) NOT NULL,
     
     FOREIGN KEY (id_funcionario) REFERENCES Funcionario(id)
@@ -115,7 +115,7 @@ CREATE TABLE Entregador (
 CREATE TABLE Fornecedor (
     id INT PRIMARY KEY AUTO_INCREMENT,
     id_pessoa INT NOT NULL,
-    cnpj VARCHAR(45) UNIQUE NOT NULL,
+    cnpj VARCHAR(18) UNIQUE NOT NULL,
     
     FOREIGN KEY (id_pessoa) REFERENCES Pessoa(id)
 		ON UPDATE CASCADE

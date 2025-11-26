@@ -1,4 +1,4 @@
-from pizza_CRUD import adicionarPizza, listarPizzas, atualizarPizza, deletarPizza
+from CRUD.pizza_CRUD import adicionarPizza, listarPizzas, atualizarPizza, deletarPizza
 
 def menuPizza():
     while True:
@@ -14,6 +14,7 @@ def menuPizza():
         match opcao:
             case "1":
                 listarPizzas()
+                
             case "2":
                 tamanho = input("Tamanho da pizza (P, M, G): ")
                 sabor = input("Sabor da pizza: ")
@@ -21,17 +22,19 @@ def menuPizza():
               
                 adicionarPizza( tamanho, sabor, valor)
 
-                
             case "3":
                 listarPizzas()
                 print("-" * 20)
                 atualizarPizza()
+
             case "4":
                 listarPizzas()
                 print("-" * 20)
                 deletarPizza()
+
             case "0":
                 print("Saindo do menu de pizzas...")
                 break
+
             case _:
                 print("\nOpção inválida!")
