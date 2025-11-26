@@ -2,7 +2,7 @@ from conexao import conectar
 from mysql.connector import Error
 
 
-#testar ainda
+# Read
 def listarPizzas():
     conexao = conectar()
     if conexao is None:
@@ -24,7 +24,7 @@ def listarPizzas():
         cursor.close()
         conexao.close()
 
-
+# Create
 def adicionarPizza(tamanho, sabor, valor_pizza):
     conexao = conectar()
     if conexao is None:
@@ -46,7 +46,7 @@ def adicionarPizza(tamanho, sabor, valor_pizza):
         cursor.close()
         conexao.close()
 
-
+# Update
 def atualizarPizza():
     conexao = conectar()
     if conexao is None:
@@ -77,7 +77,8 @@ def atualizarPizza():
     finally:
         cursor.close()
         conexao.close()
-
+        
+# Delete
 def deletarPizza():
     conexao = conectar()
     if conexao is None:
