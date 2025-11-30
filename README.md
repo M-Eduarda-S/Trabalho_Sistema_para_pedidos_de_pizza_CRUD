@@ -88,7 +88,7 @@ Execute esses scripts no MySQL antes de iniciar o programa.<br><br>
 <br><br>
 
 #### Observações:
-- Caso precise alterar as credenciais do banco, edite o arquivo conexao.py.
+- Caso precise alterar as credenciais do banco, edite o arquivo `.env`.
 - Todos os dados utilizados são fictícios e servem apenas para fins de teste.
 - O projeto implementa operações de CRUD completo para gerenciamento das tabelas relacionadas ao sistema de pedidos de pizza.<br><br>
 
