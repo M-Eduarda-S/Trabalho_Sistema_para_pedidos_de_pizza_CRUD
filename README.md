@@ -21,6 +21,12 @@ Se esta for a sua primeira vez executando o projeto, instale o conector Pythonâ€
 ```bash
 pip install mysql-connector-python
 ```
+
+# Caso o comando a cima apresente erro, utilize o comando a seguir
+```bash
+python -m pip install mysql-connector-python
+```
+
 <br>Se estiver utilizando um ambiente virtual (opcional), ative-o:
 ```
 .venv\Scripts\activate
