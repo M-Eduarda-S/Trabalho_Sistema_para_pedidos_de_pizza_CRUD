@@ -22,7 +22,7 @@ Se esta for a sua primeira vez executando o projeto, instale o conector Pythonâ€
 pip install mysql-connector-python
 ```
 
-# Caso o comando a cima apresente erro, utilize o comando a seguir
+Caso o comando a cima apresente erro, utilize o comando a seguir:
 ```bash
 python -m pip install mysql-connector-python
 ```
