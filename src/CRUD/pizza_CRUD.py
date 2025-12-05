@@ -74,19 +74,19 @@ def atualizarPizza(id_pizza):
         cursor.execute("SELECT DISTINCT tamanho FROM Pizza ORDER BY tamanho")
         tamanhos = cursor.fetchall()
 
-        print("\nTamanhos de pizzas disponíveis no banco:")
+        print("\n-> Tamanhos de pizzas disponíveis no banco:")
         for t in tamanhos:
             print("-", t[0])
 
         print("\nTamanho atual da pizza:", tamanho_atual)
-        novo_tamanho = input("Novo tamanho da pizza (Enter para manter): ").upper()
+        novo_tamanho = input("Digite o novo tamanho da pizza (enter para manter): ").upper()
 
         if novo_tamanho == "":
             novo_tamanho = tamanho_atual
 
         # preço da pizza
-        print(f"Preço atual da pizza: R${preco_atual:.2f}")
-        preco = input("Novo preço da pizza (Enter para manter): R$")
+        print(f"\nPreço atual da pizza: R${preco_atual:.2f}")
+        preco = input("Digite o novo preço da pizza (enter para manter): R$")
 
         if preco == "":
             preco = preco_atual

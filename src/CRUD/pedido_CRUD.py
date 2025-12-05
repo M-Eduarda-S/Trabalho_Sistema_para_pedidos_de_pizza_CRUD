@@ -109,7 +109,6 @@ def visualizarPedidos():
 
 
 def listarPedidos():
-    print("\n-> Lista de Pedidos: ")
     conexao = None
     cursor = None
 
@@ -121,7 +120,7 @@ def listarPedidos():
         cursor = conexao.cursor()
         
         sql = """
-            SELECT Pedido.id, Pessoa.nome, Pedido.status, Pedido.valor_pagamento, Pedido.data_pedido
+            SELECT Pedido.id, Pessoa.nome, Pedido.status, Pedido.valor_pagamento, Pedido.data_pedido, Pedido.horario_pedido
             FROM Pedido
             INNER JOIN Cliente ON Pedido.id_cliente = Cliente.id
             INNER JOIN Pessoa ON Cliente.id_pessoa = Pessoa.id
@@ -135,8 +134,9 @@ def listarPedidos():
             print("\nNenhum pedido cadastrado!")
             return
 
+        print("\n-> Lista de Pedidos: ")
         for p in pedidos:
-            print(f"ID: {p[0]} | Cliente: {p[1]} | Status: {p[2]} | Valor: R$ {p[3]:.2f} | Data: {p[4]}")
+            print(f"ID: {p[0]} | Cliente: {p[1]} | Status: {p[2]} | Valor: R$ {p[3]:.2f} | Data: {p[4]} | Horário: {p[5]}")
 
     except Error as e:
         print(f"Erro ao listar pedidos: {e}")
@@ -169,20 +169,32 @@ def adicionarPizzaAoPedido(cursor, id_pedido):
         if not sabores:
             return
         
-        id_sabor = int(input("\nEscolha o ID do sabor da pizza: "))
-        
-        # verifica se o ID do sabor existe
-        cursor.execute("SELECT id FROM Sabor WHERE id = %s", (id_sabor,))
-        if not cursor.fetchone():
-            print("Sabor de pizza não encontrado!")
-            return
-        
+        quantidade_sabores = int(input("\nQuantos sabores você deseja na pizza? (1 ou 2): "))
+
+        if quantidade_sabores not in (1, 2):
+            print("Escolha inválida! Será considerado 1 sabor.")
+            quantidade_sabores = 1
+
+        lista_sabores = [] # para guardar os id de sabor escolhidos
+
+        for i in range(quantidade_sabores):
+            print(f"\nEscolha o sabor {i+1}:")
+            id_sabor = int(input("ID do sabor: "))
+
+            cursor.execute("SELECT id FROM Sabor WHERE id = %s", (id_sabor,))
+            if not cursor.fetchone():
+                print("Sabor da pizza não encontrado!")
+                return
+            
+            lista_sabores.append(id_sabor)
+
         # insere o registro na tabela Pedido_Pizza
         cursor.execute(""" INSERT INTO Pedido_Pizza (id_pedido, id_pizza) VALUES (%s, %s) """, (id_pedido, id_pizza))
         id_pedido_pizza = cursor.lastrowid
 
         # insere o sabor na tabela Pizza_Sabor
-        cursor.execute(""" INSERT INTO Pizza_Sabor (id_pedido_pizza, id_sabor) VALUES (%s, %s) """, (id_pedido_pizza, id_sabor))
+        for id_sabor in lista_sabores:
+            cursor.execute(""" INSERT INTO Pizza_Sabor (id_pedido_pizza, id_sabor) VALUES (%s, %s) """, (id_pedido_pizza, id_sabor))
 
         # pega o valor da pizza para somar no pedido
         cursor.execute("SELECT valor_pizza FROM Pizza WHERE id = %s", (id_pizza,))
@@ -192,7 +204,7 @@ def adicionarPizzaAoPedido(cursor, id_pedido):
         
         print("Pizza adicionada ao pedido com sucesso!")
         
-        return preco # retorna o valor da pizza adicionada
+        return float(preco) if preco is not None else 0.0 # retorna o valor da pizza adicionada
 
     except ValueError:
         print("Entrada inválida! Insira um número válido.")
@@ -213,6 +225,7 @@ def adicionarPedido():
         
         cursor = conexao.cursor()
         
+        print("-> Lista de Clientes: ")
         # Lista os clientes disponíveis
         listarClientes()
         
@@ -259,7 +272,11 @@ def adicionarPedido():
                 adicionarPizzaAoPedido(cursor, id_pedido)
         
         conexao.commit()
-        print("\nPedido finalizado com sucesso!")
+
+        cursor.execute("SELECT valor_pagamento FROM Pedido WHERE id = %s", (id_pedido,))
+        valor_final = cursor.fetchone()[0]
+
+        print(f"\nPedido finalizado com sucesso! Valor total para pagamento: R${valor_final}")
         
     except Error as e:
         print(f"Erro ao criar pedido: {e}")
