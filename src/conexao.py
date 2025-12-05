@@ -1,10 +1,10 @@
 import mysql.connector
 from mysql.connector import Error
-from dotenv import carrega_dotenv
+from dotenv import load_dotenv
 import os
 
 # Carrega variáveis do arquivo .env
-carrega_dotenv()
+load_dotenv()
 
 # Estabelece conexão com o Banco de Dados
 def conectar():
