@@ -10,12 +10,12 @@ def listarPizzas():
     
     try:
         cursor = conexao.cursor()
-        cursor.execute("SELECT id_pizza, nome, ingredientes, preco FROM Pizza")
+        cursor.execute("SELECT id_pizza, preco FROM Pizza")
         pizzas = cursor.fetchall()
 
         print("\n--- LISTA DE PIZZAS ---")
         for pizza in pizzas:
-            print(f"ID: {pizza[0]}, Nome: {pizza[1]}, Ingredientes: {pizza[2]}, Preço: R${pizza[3]:.2f}")
+            print(f"ID: {pizza[0]}, Nome: {pizza[1]}, Preço: R${pizza[2]:.2f}")
 
     except Error as e:
         print("Erro ao listar pizzas:", e)
@@ -25,7 +25,7 @@ def listarPizzas():
         conexao.close()
 
 # Create
-def adicionarPizza(tamanho, sabor, valor_pizza):
+def adicionarPizza(tamanho, valor_pizza):
     conexao = conectar()
     if conexao is None:
         return
@@ -56,12 +56,10 @@ def atualizarPizza():
         cursor = conexao.cursor()
 
         id_pizza = int(input("\nID da pizza a ser atualizada: "))
-        nome = input("Novo nome da pizza: ")
-        ingredientes = input("Novos ingredientes (separados por vírgula): ")
         preco = float(input("Novo preço da pizza: R$"))
 
-        sql = "UPDATE Pizza SET nome = %s, ingredientes = %s, preco = %s WHERE id_pizza = %s"
-        valores = (nome, ingredientes, preco, id_pizza)
+        sql = "UPDATE Pizza SET nome = %s, preco = %s WHERE id_pizza = %s"
+        valores = (preco, id_pizza)
 
         cursor.execute(sql, valores)
         conexao.commit()
