@@ -1,8 +1,8 @@
-from CRUD.pizza_CRUD import adicionarPizza, listarPizzas, atualizarPizza, deletarPizza
+from CRUD.pizza_CRUD import listarPizzas, adicionarPizza, atualizarPizza, deletarPizza
 
 def menuPizza():
     while True:
-        print("CRUD PIZZA")
+        print("\nCRUD PIZZA")
         print("1. Listar Pizzas")
         print("2. Adicionar Pizza")
         print("3. Atualizar Pizza")
@@ -16,21 +16,23 @@ def menuPizza():
                 listarPizzas()
                 
             case "2":
-                tamanho = input("Tamanho da pizza (P, M, G): ")
-                sabor = input("Sabor da pizza: ")
-                valor = float(input("Valor da pizza: "))
-              
-                adicionarPizza( tamanho, sabor, valor)
+                tamanho = input("Tamanho da pizza: ").upper()
+                valor = float(input("Valor da pizza: R$"))
+                adicionarPizza(tamanho, valor)
 
             case "3":
-                listarPizzas()
-                print("-" * 20)
-                atualizarPizza()
+                id_pizza = input("\nID do Pedido: ").strip()
+                if id_pizza.isdigit():
+                    atualizarPizza(int(id_pizza))
+                else:
+                    print("ID inválido! Use apenas números.")
 
             case "4":
-                listarPizzas()
-                print("-" * 20)
-                deletarPizza()
+                id_pizza = input("\nID do Pedido: ").strip()
+                if id_pizza.isdigit():
+                    deletarPizza(int(id_pizza))
+                else:
+                    print("ID inválido! Use apenas números.")
 
             case "0":
                 print("Saindo do menu de pizzas...")

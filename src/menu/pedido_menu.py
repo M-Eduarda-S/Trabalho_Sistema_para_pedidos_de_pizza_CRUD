@@ -1,34 +1,36 @@
-from CRUD.pedido_CRUD import visualizarPedidos, adicionarPedido, deletarPedido, atualizarPedido, listarPedidos
+from CRUD.pedido_CRUD import listarPedidos, adicionarPedido, deletarPedido, atualizarPedido
 
 def menuPedido():
     while True:
-        print("\n" + "="*40)
-        print("CRUD PEDIDO")
-        print("="*40)
-        print("1. Visualizar Pedidos")
+        print("\nCRUD PEDIDO")
+        print("1. Listar Pedidos")
         print("2. Adicionar Pedido")
         print("3. Atualizar Pedido")
         print("4. Deletar Pedido")
         print("0. Sair")
-        print("="*40)
 
         opcao = input("\nSelecione uma opção: ").strip()
 
         match opcao:
             case "1":
-                visualizarPedidos()
+                listarPedidos()
 
             case "2":
-                print("\n--- Adicionar Novo Pedido ---")
                 adicionarPedido()
 
             case "3":
-                print("\n--- Atualizar Pedido ---")
-                atualizarPedido()
+                id_pedido = input("\nID do Pedido: ").strip()
+                if id_pedido.isdigit():
+                    atualizarPedido(int(id_pedido))
+                else:
+                    print("ID inválido! Use apenas números.")
 
             case "4":
-                print("\n--- Deletar Pedido ---")
-                deletarPedido()
+                id_pedido = input("\nID do Pedido: ").strip()
+                if id_pedido.isdigit():
+                    deletarPedido(int(id_pedido))
+                else:
+                    print("ID inválido! Use apenas números.")
 
             case "0":
                 print("Saindo do menu de pedidos...")

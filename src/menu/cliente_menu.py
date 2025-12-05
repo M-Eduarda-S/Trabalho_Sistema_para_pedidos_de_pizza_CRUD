@@ -23,12 +23,18 @@ def menuCliente():
                 listarClientes()
 
             case "3":
-                id_cliente = input("\nID do Cliente: ")
-                atualizarCliente(id_cliente)
+                id_cliente = input("\nID do Pedido: ").strip()
+                if id_cliente.isdigit():
+                    atualizarCliente(int(id_cliente))
+                else:
+                    print("ID inválido! Use apenas números.")
 
             case "4":
-                id_cliente = input("\nID do Cliente: ")
-                deletarCliente(id_cliente)
+                id_cliente = input("\nID do Pedido: ").strip()
+                if id_cliente.isdigit():
+                    deletarCliente(int(id_cliente))
+                else:
+                    print("ID inválido! Use apenas números.")
 
             case "0":
                 print("\nSaindo do CRUD CLIENTE...")
