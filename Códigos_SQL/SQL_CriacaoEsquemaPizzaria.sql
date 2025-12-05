@@ -185,7 +185,7 @@ CREATE TABLE Pedido (
 -- DROP TABLE Pizza;
 CREATE TABLE Pizza (
     id INT PRIMARY KEY AUTO_INCREMENT,
-    tamanho ENUM('P', 'M', 'G', 'GG') NOT NULL,
+    tamanho VARCHAR(10) NOT NULL,
     valor_pizza DECIMAL(10,2) NOT NULL
 );
 
