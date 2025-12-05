@@ -21,21 +21,21 @@ def menuPizza():
                 adicionarPizza(tamanho, valor)
 
             case "3":
-                id_pizza = input("\nID do Pedido: ").strip()
+                id_pizza = input("\nID da Pizza: ").strip()
                 if id_pizza.isdigit():
                     atualizarPizza(int(id_pizza))
                 else:
                     print("ID inválido! Use apenas números.")
 
             case "4":
-                id_pizza = input("\nID do Pedido: ").strip()
+                id_pizza = input("\nID da Pizza: ").strip()
                 if id_pizza.isdigit():
                     deletarPizza(int(id_pizza))
                 else:
                     print("ID inválido! Use apenas números.")
 
             case "0":
-                print("Saindo do menu de pizzas...")
+                print("Saindo do CRUD PIZZA...")
                 break
 
             case _:

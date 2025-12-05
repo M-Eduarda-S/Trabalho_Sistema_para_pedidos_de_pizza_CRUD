@@ -120,7 +120,7 @@ def listarPedidos():
         cursor = conexao.cursor()
         
         sql = """
-            SELECT Pedido.id, Pessoa.nome, Pedido.status, Pedido.valor_pagamento, Pedido.data_pedido, Pedido.horario_pedido
+            SELECT Pedido.id, Pessoa.nome, Pedido.status, Pedido.valor_pagamento, Pedido.endereco_entrega, Pedido.data_pedido, Pedido.horario_pedido
             FROM Pedido
             INNER JOIN Cliente ON Pedido.id_cliente = Cliente.id
             INNER JOIN Pessoa ON Cliente.id_pessoa = Pessoa.id
@@ -136,7 +136,7 @@ def listarPedidos():
 
         print("\n-> Lista de Pedidos: ")
         for p in pedidos:
-            print(f"ID: {p[0]} | Cliente: {p[1]} | Status: {p[2]} | Valor: R$ {p[3]:.2f} | Data: {p[4]} | Horário: {p[5]}")
+            print(f"ID: {p[0]} | Cliente: {p[1]} | Status: {p[2]} | Valor: R$ {p[3]:.2f} | Endereço da entrega: {p[4]} | Data: {p[5]} | Horário: {p[6]}")
 
     except Error as e:
         print(f"Erro ao listar pedidos: {e}")

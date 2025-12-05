@@ -33,7 +33,7 @@ def menuPedido():
                     print("ID inválido! Use apenas números.")
 
             case "0":
-                print("Saindo do menu de pedidos...")
+                print("Saindo do CRUD PEDIDO...")
                 break
 
             case _:
